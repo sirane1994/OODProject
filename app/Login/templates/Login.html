@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Orange Gatherings - Login</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+  <style type="text/css">
+	body {
+        color: #434343;
+		background: #dfe7e9;
+		font-family: 'Varela Round', sans-serif;
+	}
+    .form-control {
+		font-size: 16px;
+		transition: all 0.4s;
+		box-shadow: none;
+	}
+	.form-control:focus {
+        border-color: #5cb85c;
+    }
+    .form-control, .btn {
+        border-radius: 50px;
+		outline: none !important;
+    }
+	.signin-form {
+		width: 500px;
+    	margin: 0 auto;
+		padding: 30px 0;
+	}
+    .signin-form form {
+		border-radius: 5px;
+    	margin-bottom: 20px;
+        background: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+    }
+	.signin-form a {
+		color: #5cb85c;
+	}    
+	.signin-form h2 {
+		text-align: center;
+		font-size: 34px;
+		margin: 10px 0 15px;
+	}
+	.signin-form .hint-text {
+		color: #999;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.signin-form .form-group {
+		margin-bottom: 20px;
+	}
+    .signin-form .btn {        
+        font-size: 18px;
+		line-height: 26px;        
+        font-weight: bold;
+		text-align: center;
+    }
+    .signin-form .small {
+        font-size: 13px;
+    }
+	.signup-btn {
+		text-align: center;
+		border-color: #5cb85c;
+		transition: all 0.4s;
+	}
+	.signup-btn:hover {
+		background: #5cb85c;
+		opacity: 0.8;
+	}
+    .or-seperator {
+        margin: 50px 0 15px;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+    }
+    .or-seperator b {
+        padding: 0 10px;
+		width: 40px;
+		height: 40px;
+		font-size: 16px;
+		text-align: center;
+		line-height: 40px;
+		background: #fff;
+		display: inline-block;
+        border: 1px solid #e0e0e0;
+		border-radius: 50%;
+        position: relative;
+        top: -22px;
+        z-index: 1;
+    }
+    .social-btn .btn {
+		color: #fff;
+        margin: 10px 0 0 30px;
+		font-size: 15px;
+        width: 55px;
+        height: 55px;
+        line-height: 38px;
+        border-radius: 50%;
+		font-weight: normal;
+        text-align: center;
+		border: none;
+		transition: all 0.4s;
+    }	
+	.social-btn .btn:first-child {
+		margin-left: 0;
+	}
+	.social-btn .btn:hover {
+		opacity: 0.8;
+	}
+	.social-btn .btn-primary {
+		background: #507cc0;
+	}
+	.social-btn .btn-info {
+		background: #64ccf1;
+	}
+	.social-btn .btn-danger {
+		background: #df4930;
+	}
+	.social-btn .btn i {
+		font-size: 20px;
+	}
+</style>
+</head>
+
+<body class="bg-dark">
+
+  <div class="container">
+        <div class="signin-form">
+                <form action="/examples/actions/confirmation.php" method="post">
+                    <h2>Sign in</h2>
+                    <p class="hint-text">Sign in with your social media account</p>
+                    <div class="social-btn text-center">
+                        <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
+					</div>
+					</form>
+					<div>
+						<form method="post" action="/login_post/">
+							{% csrf_token %}
+							<div class="form-group">
+								<div class="form-label-group">
+								  <input type="email" id="userEmail" name="userEmail" class="form-control" placeholder="Email">
+								  <label for="userEmail">Email</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="form-label-group">
+								  <input type="password" id="userPassword" name="userPassword" class="form-control" placeholder="Password">
+								  <label for="userPassword">Password</label>
+								</div>
+							</div>
+							<button type="submit">Login</button>
+							<h3><a href="/Profile/">Register</a> </h3>
+
+							{% for message in messages %}
+                    		<div class="alert alert-success">
+                      		<a class="close" href="#" data-dismiss="alert">×</a>
+							{{ message }}
+							  
+                   			 </div>
+           					{% endfor %}
+						  </form>
+					</div>
+					<div>
+						
+
+					</div>
+            </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+</body>
+
+</html>

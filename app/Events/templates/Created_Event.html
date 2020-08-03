@@ -1,0 +1,96 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Event Info</title>
+
+<link href="{% static 'css/all.min.css'%}" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+</head>
+
+<body class="bg-dark">
+
+<div class="container">
+    <div class="card  mx-auto mt-5" style="font-size: 15px;font-weight:bold;">
+<div class="card-header">Event Information</div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col-md-12">
+              <div class="form-label-group" style="font-size: 15px; font-weight:bold;">
+              Event Name : {{ event.EventName }}
+          </div>
+        </br>
+      
+</div>
+<div class="col-md-12">
+  <div class="form-label-group">
+      Event Description : {{ event.EventDescription }}
+  </div>
+</div>
+</div>
+</div>
+<div class="form-group">
+<div class="form-label-group">
+Event Location : {{ event.EventLocation }}
+</div>
+</div>
+<div class="form-row">
+<div class="col-md-12">
+  <div class="form-label-group">
+              Number of Attendees : {{ event.NoofAttendees }}
+  </div>
+</div>
+</div>
+<br/>
+        <div class="form-row">
+<div class="col-md-12">
+  <div class="form-label-group">
+              Event Date : {{ event.EventDate }}
+  </div>
+</div>
+<div class="col-md-12">
+    <div class="form-label-group">
+    Event Owner : {{ event.OwnerName }}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-label-group">
+    No of Attendees Joined : {{ event.AttendeesJoined }}
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+{% if event.OwnerId == event.UserId %}
+<h3><a href="/delete_event/{{event.id}}" class="btn btn-info">Delete</a> </h3>
+<h3><a href="/NewCreatedEvent/{{event.id}}" class="btn btn-info">Edit</a> </h3>
+{% if not event.IsInitialized %}
+<h3><a href="/initialize_event/{{event.id}}" class="btn btn-info">Initialize</a> </h3>
+{% endif %}
+{% endif %}
+{% if event.OwnerId != event.UserId %}
+<h3><a href="/join_event/{{event.id}}" class="btn btn-info">Join</a> </h3>
+{% endif %}
+
+</div>
+</div>
+</div>
+</body>
+
+{% endblock %}

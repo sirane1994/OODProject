@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% block content %}
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Orange Gathering Profile Creation</title>
+
+<!-- Custom fonts for this template-->
+<link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template-->
+<link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="bg-dark">
+
+<div class="container">
+  <div class="card mx-auto mt-5">
+    <div class="card-header" style= "font-weight:bold;">Create Profile</div>
+    <div class="card-body">
+      <form method="POST" action="/profile_creation_post/">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="form-label-group">
+                <input type="text" id="firstName" name="firstName"class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                <label for="firstName">First name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-label-group">
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last name" required="required">
+                <label for="lastName">Last name</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-label-group">
+            <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required="required" >
+            <label for="inputEmail">Email address</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-label-group">
+            <input type="password" id="userPassword" name="userPassword" class="form-control" placeholder="Password" required="required">
+            <label for="userPassword">Password</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="form-label-group">
+                <input type="number" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone number">
+                <label for="phoneNumber">Phone Number</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-label-group">
+                <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" placeholder="Date of Birth">
+                <label for="dateOfBirth">Date Of Birth</label>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <!-- <div class="form-group">
+            <div class="form-label-group">
+              <input type="text" id="locationCriteria" name="locationCriteria" class="form-control" placeholder="Location Criteria">
+              <label for="locationCriteria">Location Criteria</label>
+            </div>
+          </div> -->
+          <div>
+              <label>Location Preferences</label>
+            </div>
+            <select multiple name="locationCriteria" class = "browser-default custom-select">
+              <option value="Recess Cafe" selected="selected">Recess Cafe</option>
+              <option value="Dunkin">Dunkin</option>
+              <option value="Alto Cinco">Alto Cinco</option>
+              <option value="Starbucks">Starbucks</option>
+            </select>
+            
+  </div>
+          
+          <!-- <div class="form-group">
+                  <div class="form-label-group">
+                    <input type="text" id="eventCategories" name="eventCategories" class="form-control" placeholder="Event Categories">
+                    <label for="eventCategories">Event Categories</label>
+                  </div>
+                </div>
+        </div> -->
+        <div class="col-md-6">
+            <div class="form-label-group">
+                <div>
+                    <label>Event Categories</label>
+                  </div>
+                  <select multiple name="eventCategories" class = "browser-default custom-select">
+                    <option value="Books" selected="selected">Books</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Learning">Learning</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Music">Music</option>
+                  </select>
+        </div>
+      </div>
+      <br/>
+        <input type="submit" class="btn btn-primary btn-block" value="Create Profile">
+      </form>
+      <div class="text-center">
+        <a class="d-block small mt-3" href="/login/">Login Page</a>
+        <a class="d-block small" href="{% static 'forgot-password.html' %}">Forgot Password?</a>
+      
+    </div>
+  </div>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Java Script for Multiselect picklist -->
+<script src="{% static 'js/location-criteria.js' %}"></script>
+</body>
+{% endblock %}

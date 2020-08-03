@@ -1,0 +1,113 @@
+{% extends 'index.html' %}
+{%load static%}
+{% block content %}
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Create Event</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'css/all.min.css'%} rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin.css'%}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <style>
+  .clas-height{
+    height: 200px;
+    width: 100%;
+  }
+  </style>
+</head>
+<body class="bg-dark third{
+  background: url("/static/a.jpeg");
+  background-repeat:no-repeat;
+  background-size:contain;
+  height: 100px !important; widows: 230px !important;
+     
+  }">
+
+  <div class="container">
+    <div class="clas-height" >
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Create Event</div>
+      <div class="card-body">
+        <form method="POST" action="/event_creation_post/">
+            {% csrf_token %}
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-12">
+                  <div class="form-label-group">
+                    <input type="text" id="EventName" name = "EventName" class="form-control" placeholder="Event Name" required="required" autofocus="autofocus">
+                    <label for="EventName">Event Name</label>
+                  </div>
+                  <br/>
+                </div>
+                <br/>
+                <div class="col-md-12">
+                  <div class="form-label-group">
+                    <input id="EventDescription" name="EventDescription" class="form-control" placeholder="Event Description" required="required">
+                    <label for="EventDescription">Event Description</label>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+                
+              <br/>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="text" id="NoofAttendees" name="NoofAttendees" class="form-control" placeholder="No. of Attendees" required="required">
+                    <label for="NoofAttendees">No. of Attendees</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="date" id="EventDate" name="EventDate" class="form-control" placeholder="Event Date" required="required">
+                    <label for="EventDate">Event Date</label>
+                  </div>
+                </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                    <div>
+                        <label>EventLocation</label>
+              </div>
+              <select multiple name="EventLocation" class = "browser-default custom-select">
+                <option value="Cafe 1" selected="selected">Cafe 1</option>
+                <option value="Cafe 2">Cafe 2</option>
+                <option value="Cafe 3">Cafe 3</option>
+                <option value="Cafe 4">Cafe 4</option>
+              </select>
+            </div>
+            </div>
+          </div>
+          <br/>
+            </div>
+          </div>
+          <input type="submit" class="btn btn-primary btn-block" value="Create Event">
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'static/js/multipicklist.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+
+{% endblock %}
